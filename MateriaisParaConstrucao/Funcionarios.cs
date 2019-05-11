@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,16 +10,17 @@ namespace MateriaisParaConstrucao
 {
     public class Funcionarios
     {
+        SqlCommand comandoSql = new SqlCommand();
+        StringBuilder sql = new StringBuilder();
+        DataTable dadosTabela = new DataTable();
+
         //Método que irá Salvar as informações conforme os parâmetros que possui entre parênteses
         public void Salvar(string nome, string endereco, string bairro, string cep, string cidade, string email,
                            DateTime nascimento, string telefone1, string telefone2, string rg, string cpf,
                            string observacoes, DateTime dataCadastro)
         {
             try //Estrutura try, a qual tenta realizar o que está dentro das suas chaves
-            {
-                SqlCommand comandoSql = new SqlCommand();
-                StringBuilder sql = new StringBuilder();
-
+            {     
                 //Estabelece a conexão com o banco através da string de conexão
                 using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
                 {
@@ -58,6 +60,75 @@ namespace MateriaisParaConstrucao
             {
                 //Caso ocorra um erro no bloco try, entrará no catch, onde irá detectá-lo.
                 throw new Exception("Ocorreu um erro no método Salvar. Caso o problema persista, entre em contato com o Administrador do Sistema.");
+            }           
+        }
+
+        public DataTable Listar()
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+                    conexao.Open();
+                    sql.Append("SELECT *FROM Funcionario");
+                    sql.Append(" ORDER BY ID_FUNCIONARIO DESC");
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    dadosTabela.Load(comandoSql.ExecuteReader());
+                    return dadosTabela;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Ocorreu um erro no método Listar.Caso o Problema persista entre em contato com o administrador do sistema.");
+            }
+        }
+
+        //método que irá Atualizar as informações conforme os parâmetros que possui entre parênteses
+        public void Alterar(int idFuncionario, string nome, string endereco, string bairro, string cep,
+                            string cidade, string email, DateTime nascimento, string telefone1, string telefone2,
+                            string rg, string cpf, string observacoes, DateTime dataCadastro)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+                    conexao.Open();
+
+                    sql.Append("UPDATE Funcionario");
+                    sql.Append(" SET NOME_FUNCIONARIO=@nome, ENDERECO_FUNCIONARIO=@endereco, BAIRRO_FUNCIONARIO=@bairro, ");
+                    sql.Append("CEP_FUNCIONARIO=@cep, CIDADE_FUNCIONARIO=@cidade, EMAIL_FUNCIONARIO=@email, ");
+                    sql.Append("NASCIMENTO_FUNCIONARIO=@nascimento, OBSERVACOES_FUNCIONARIO=@observacoes, ");
+                    sql.Append("TELEFONE1_FUNCIONARIO=@telefone1, TELEFONE2_FUNCIONARIO=@telefone2, RG_FUNCIONARIO=@rg, ");
+                    sql.Append("CPF_FUNCIONARIO=@cpf, DATA_CADASTRO_FUNCIONARIO=@dataCadastro");
+
+                    sql.Append(" WHERE (ID_FUNCIONARIO=@idFuncionario)");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@nome", nome));
+                    comandoSql.Parameters.Add(new SqlParameter("@endereco", endereco));
+                    comandoSql.Parameters.Add(new SqlParameter("@bairro", bairro));
+                    comandoSql.Parameters.Add(new SqlParameter("@cep", cep));
+                    comandoSql.Parameters.Add(new SqlParameter("@cidade", cidade));
+                    comandoSql.Parameters.Add(new SqlParameter("@email", email));
+                    comandoSql.Parameters.Add(new SqlParameter("@nascimento", nascimento));
+                    comandoSql.Parameters.Add(new SqlParameter("@observacoes", observacoes));
+                    comandoSql.Parameters.Add(new SqlParameter("@telefone1", telefone1));
+                    comandoSql.Parameters.Add(new SqlParameter("@telefone2", telefone2));
+                    comandoSql.Parameters.Add(new SqlParameter("@rg", rg));
+                    comandoSql.Parameters.Add(new SqlParameter("@cpf", cpf));
+                    comandoSql.Parameters.Add(new SqlParameter("@dataCadastro", dataCadastro));
+                    comandoSql.Parameters.Add(new SqlParameter("@idFuncionario", idFuncionario));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    comandoSql.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro no método Alterar. Caso o problema persista, entre em contato com o Administrador do Sistema.");
             }
         }
     }
