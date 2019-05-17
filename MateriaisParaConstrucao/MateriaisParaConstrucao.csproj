@@ -46,12 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes.cs" />
     <Compile Include="Conexao.cs" />
-    <Compile Include="frmFuncionarios.cs">
+    <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFuncionarios.Designer.cs">
-      <DependentUpon>frmFuncionarios.cs</DependentUpon>
+    <Compile Include="frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFuncionarios.Designer.cs">
+      <DependentUpon>FrmFuncionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -62,8 +69,11 @@
     <Compile Include="Funcionarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmFuncionarios.resx">
-      <DependentUpon>frmFuncionarios.cs</DependentUpon>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFuncionarios.resx">
+      <DependentUpon>FrmFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

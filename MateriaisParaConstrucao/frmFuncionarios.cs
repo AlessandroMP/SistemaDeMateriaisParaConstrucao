@@ -114,9 +114,57 @@ namespace MateriaisParaConstrucao
                     dtpDataCadastro.Value = Convert.ToDateTime(dtgFuncionario.Rows[e.RowIndex].Cells["DATA_CADASTRO_FUNCIONARIO"].Value.ToString());
                     txtObservacoes.Text = dtgFuncionario.Rows[e.RowIndex].Cells["OBSERVACOES_FUNCIONARIO"].Value.ToString();
                 }
+                else
+                {
+                    if (dtgFuncionario.Columns[e.ColumnIndex].Name == "btnExcluir" && MessageBox.Show("Deseja realmente excluir?","Deseja Excluir?",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            novoFuncionario = new Funcionarios();
+                            novoFuncionario.Excluir(Convert.ToInt32(dtgFuncionario.Rows[e.RowIndex].Cells["ID_FUNCIONARIO"].Value));
+                            MessageBox.Show("Funcionario Excluido com sucesso", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            ListarFuncionarios();
+                            Limpar(); 
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                        }
+                    } 
+                }
             }
-           
+        }
+
+        private void BtnNovo_Click(object sender, EventArgs e)
+        {
+            Limpar();
+        }
+
+        private void TxtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            /* Evento  do txtPesquisa, o qual verifica se desejamos pesquisar por um nome ou cpf 
+             * e exiba os resultados de acordo com o que for digitado no mesmo*/
+             
+            novoFuncionario = new Funcionarios();
+
+            try
+            {
+                if (rbNome.Checked)
+                {
+                    dtgFuncionario.DataSource = novoFuncionario.PesquisarNome(txtPesquisa.Text);
+                }
+                else
+                {
+                    dtgFuncionario.DataSource = novoFuncionario.PesquisarCpf(txtPesquisa.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
-
 }  

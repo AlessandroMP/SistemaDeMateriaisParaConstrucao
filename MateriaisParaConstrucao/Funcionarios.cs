@@ -20,7 +20,7 @@ namespace MateriaisParaConstrucao
                            string observacoes, DateTime dataCadastro)
         {
             try //Estrutura try, a qual tenta realizar o que está dentro das suas chaves
-            {     
+            {
                 //Estabelece a conexão com o banco através da string de conexão
                 using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
                 {
@@ -60,7 +60,7 @@ namespace MateriaisParaConstrucao
             {
                 //Caso ocorra um erro no bloco try, entrará no catch, onde irá detectá-lo.
                 throw new Exception("Ocorreu um erro no método Salvar. Caso o problema persista, entre em contato com o Administrador do Sistema.");
-            }           
+            }
         }
 
         public DataTable Listar()
@@ -95,7 +95,7 @@ namespace MateriaisParaConstrucao
             {
                 using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
                 {
-                    conexao.Open();
+                    conexao.Open();//Abre a conexao com o banco de dados
 
                     sql.Append("UPDATE Funcionario");
                     sql.Append(" SET NOME_FUNCIONARIO=@nome, ENDERECO_FUNCIONARIO=@endereco, BAIRRO_FUNCIONARIO=@bairro, ");
@@ -131,5 +131,88 @@ namespace MateriaisParaConstrucao
                 throw new Exception("Ocorreu um erro no método Alterar. Caso o problema persista, entre em contato com o Administrador do Sistema.");
             }
         }
+
+        public void Excluir(int idFuncionario)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+                    conexao.Open();
+
+                    sql.Append("DELETE FROM Funcionario");
+                    sql.Append(" WHERE (ID_FUNCIONARIO = @idfuncionario)");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@idFuncionario", idFuncionario));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    comandoSql.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro no Método Excluir, Caso o Problema persista entre em contato com o Administrador do Sistema");
+            }
+        }
+
+        public DataTable PesquisarNome(string nome)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+
+                    conexao.Open();
+
+                    sql.Append("SELECT * FROM Funcionario");
+                    sql.Append(" WHERE (NOME_FUNCIONARIO LIKE '%' +@nome+'%')");
+                    sql.Append(" ORDER BY ID_FUNCIONARIO DESC");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@nome", nome));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    dadosTabela.Load(comandoSql.ExecuteReader());
+                    return dadosTabela;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Ocorreu um erro no Método PesquisarNome. Caso o Problema persista entre em contato com o Administrador do Sistema!");
+            }
+        }
+
+        public DataTable PesquisarCpf(string cpf)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+
+                    conexao.Open();
+
+                    sql.Append("SELECT * FROM Funcionario");
+                    sql.Append(" WHERE (CPF_FUNCIONARIO LIKE '%' +@cpf+ '%')");
+                    sql.Append(" ORDER BY ID_FUNCIONARIO DESC");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@cpf", cpf));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    dadosTabela.Load(comandoSql.ExecuteReader());
+                    return dadosTabela;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Ocorreu um erro no Método PesquisarCpf. Caso o Problema persista entre em contato com o Administrador do Sistema!");
+            }
+        }
+
     }
+
 }
+
