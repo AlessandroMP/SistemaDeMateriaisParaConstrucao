@@ -36,9 +36,9 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnFuncionarios = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOrcamento = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnVendas = new System.Windows.Forms.ToolStripButton();
-            this.btnOrcamento = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,7 @@
             this.btnClientes.Text = "Clientes";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnClientes.Click += new System.EventHandler(this.BtnClientes_Click);
             // 
             // toolStripSeparator1
             // 
@@ -121,6 +122,20 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 76);
             // 
+            // btnOrcamento
+            // 
+            this.btnOrcamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnOrcamento.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnOrcamento.Image = ((System.Drawing.Image)(resources.GetObject("btnOrcamento.Image")));
+            this.btnOrcamento.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOrcamento.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnOrcamento.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOrcamento.Name = "btnOrcamento";
+            this.btnOrcamento.Size = new System.Drawing.Size(92, 73);
+            this.btnOrcamento.Text = "Orçamento";
+            this.btnOrcamento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOrcamento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -139,20 +154,6 @@
             this.btnVendas.Text = "Vendas";
             this.btnVendas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVendas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // btnOrcamento
-            // 
-            this.btnOrcamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnOrcamento.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnOrcamento.Image = ((System.Drawing.Image)(resources.GetObject("btnOrcamento.Image")));
-            this.btnOrcamento.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOrcamento.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnOrcamento.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnOrcamento.Name = "btnOrcamento";
-            this.btnOrcamento.Size = new System.Drawing.Size(92, 73);
-            this.btnOrcamento.Text = "Orçamento";
-            this.btnOrcamento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOrcamento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // frmPrincipal
             // 

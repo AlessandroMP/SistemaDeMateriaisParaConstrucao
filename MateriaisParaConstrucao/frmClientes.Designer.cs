@@ -31,15 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNovo = new System.Windows.Forms.ToolStripButton();
-            this.btnSalvar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSalvar = new System.Windows.Forms.ToolStripButton();
             this.gbDocumentosPessoaFisica = new System.Windows.Forms.GroupBox();
-            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.txtRg = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.gbDocumentosPessoaJuridica = new System.Windows.Forms.GroupBox();
-            this.txtCnpj = new System.Windows.Forms.MaskedTextBox();
             this.txtIe = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -94,6 +92,8 @@
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.txtCnpj = new System.Windows.Forms.MaskedTextBox();
             this.toolStrip1.SuspendLayout();
             this.gbDocumentosPessoaFisica.SuspendLayout();
             this.gbDocumentosPessoaJuridica.SuspendLayout();
@@ -126,6 +126,11 @@
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 72);
+            // 
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,11 +141,7 @@
             this.btnSalvar.Size = new System.Drawing.Size(52, 69);
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 72);
+            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // gbDocumentosPessoaFisica
             // 
@@ -150,29 +151,19 @@
             this.gbDocumentosPessoaFisica.Controls.Add(this.label15);
             this.gbDocumentosPessoaFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDocumentosPessoaFisica.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gbDocumentosPessoaFisica.Location = new System.Drawing.Point(0, 0);
+            this.gbDocumentosPessoaFisica.Location = new System.Drawing.Point(568, 84);
             this.gbDocumentosPessoaFisica.Name = "gbDocumentosPessoaFisica";
-            this.gbDocumentosPessoaFisica.Size = new System.Drawing.Size(251, 81);
+            this.gbDocumentosPessoaFisica.Size = new System.Drawing.Size(253, 87);
             this.gbDocumentosPessoaFisica.TabIndex = 157;
             this.gbDocumentosPessoaFisica.TabStop = false;
             this.gbDocumentosPessoaFisica.Text = "Documentos";
-            // 
-            // txtCpf
-            // 
-            this.txtCpf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCpf.Location = new System.Drawing.Point(78, 49);
-            this.txtCpf.Mask = "999,999,999-99";
-            this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(140, 22);
-            this.txtCpf.TabIndex = 1;
             // 
             // txtRg
             // 
             this.txtRg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRg.Location = new System.Drawing.Point(78, 21);
+            this.txtRg.Location = new System.Drawing.Point(78, 22);
             this.txtRg.MaxLength = 50;
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(140, 22);
@@ -181,48 +172,37 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(19, 23);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(19, 26);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 20);
+            this.label14.Size = new System.Drawing.Size(31, 16);
             this.label14.TabIndex = 8;
             this.label14.Text = "RG:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(19, 50);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(19, 53);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 20);
+            this.label15.Size = new System.Drawing.Size(37, 16);
             this.label15.TabIndex = 8;
             this.label15.Text = "CPF:";
             // 
             // gbDocumentosPessoaJuridica
             // 
-            this.gbDocumentosPessoaJuridica.Controls.Add(this.gbDocumentosPessoaFisica);
-            this.gbDocumentosPessoaJuridica.Controls.Add(this.txtCnpj);
             this.gbDocumentosPessoaJuridica.Controls.Add(this.txtIe);
+            this.gbDocumentosPessoaJuridica.Controls.Add(this.txtCnpj);
             this.gbDocumentosPessoaJuridica.Controls.Add(this.label11);
             this.gbDocumentosPessoaJuridica.Controls.Add(this.label9);
             this.gbDocumentosPessoaJuridica.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDocumentosPessoaJuridica.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gbDocumentosPessoaJuridica.Location = new System.Drawing.Point(578, 88);
+            this.gbDocumentosPessoaJuridica.Location = new System.Drawing.Point(574, 81);
             this.gbDocumentosPessoaJuridica.Name = "gbDocumentosPessoaJuridica";
-            this.gbDocumentosPessoaJuridica.Size = new System.Drawing.Size(251, 81);
+            this.gbDocumentosPessoaJuridica.Size = new System.Drawing.Size(253, 90);
             this.gbDocumentosPessoaJuridica.TabIndex = 158;
             this.gbDocumentosPessoaJuridica.TabStop = false;
             this.gbDocumentosPessoaJuridica.Text = "Documentos";
-            // 
-            // txtCnpj
-            // 
-            this.txtCnpj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCnpj.Location = new System.Drawing.Point(78, 49);
-            this.txtCnpj.Mask = "99.999.999/9999-99";
-            this.txtCnpj.Name = "txtCnpj";
-            this.txtCnpj.Size = new System.Drawing.Size(140, 22);
-            this.txtCnpj.TabIndex = 96;
             // 
             // txtIe
             // 
@@ -332,6 +312,7 @@
             this.rbPessoaJuridica.TabIndex = 1;
             this.rbPessoaJuridica.Text = "Pessoa Jurídica";
             this.rbPessoaJuridica.UseVisualStyleBackColor = true;
+            this.rbPessoaJuridica.CheckedChanged += new System.EventHandler(this.RbPessoaJuridica_CheckedChanged);
             // 
             // rbPessoaFisica
             // 
@@ -345,6 +326,7 @@
             this.rbPessoaFisica.TabStop = true;
             this.rbPessoaFisica.Text = "Pessoa Física";
             this.rbPessoaFisica.UseVisualStyleBackColor = true;
+            this.rbPessoaFisica.CheckedChanged += new System.EventHandler(this.RbPessoaFisica_CheckedChanged);
             // 
             // txtEstado
             // 
@@ -382,12 +364,12 @@
             this.btnEditar,
             this.btnExcluir});
             this.dtgClientes.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dtgClientes.Location = new System.Drawing.Point(17, 450);
+            this.dtgClientes.Location = new System.Drawing.Point(12, 445);
             this.dtgClientes.Name = "dtgClientes";
             this.dtgClientes.ReadOnly = true;
             this.dtgClientes.RowHeadersVisible = false;
             this.dtgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgClientes.Size = new System.Drawing.Size(814, 235);
+            this.dtgClientes.Size = new System.Drawing.Size(829, 138);
             this.dtgClientes.TabIndex = 153;
             this.dtgClientes.TabStop = false;
             // 
@@ -498,6 +480,7 @@
             // btnEditar
             // 
             this.btnEditar.HeaderText = "";
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.ReadOnly = true;
             this.btnEditar.Width = 30;
@@ -505,6 +488,7 @@
             // btnExcluir
             // 
             this.btnExcluir.HeaderText = "";
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.ReadOnly = true;
             this.btnExcluir.Width = 30;
@@ -607,7 +591,7 @@
             this.Pesquisa.Controls.Add(this.txtPesquisa);
             this.Pesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pesquisa.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Pesquisa.Location = new System.Drawing.Point(578, 346);
+            this.Pesquisa.Location = new System.Drawing.Point(576, 338);
             this.Pesquisa.Name = "Pesquisa";
             this.Pesquisa.Size = new System.Drawing.Size(251, 93);
             this.Pesquisa.TabIndex = 142;
@@ -643,10 +627,10 @@
             this.rbNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbNome.Location = new System.Drawing.Point(10, 61);
             this.rbNome.Name = "rbNome";
-            this.rbNome.Size = new System.Drawing.Size(67, 22);
+            this.rbNome.Size = new System.Drawing.Size(72, 22);
             this.rbNome.TabIndex = 1;
             this.rbNome.TabStop = true;
-            this.rbNome.Text = "Nome";
+            this.rbNome.Text = "NOME";
             this.rbNome.UseVisualStyleBackColor = true;
             // 
             // txtPesquisa
@@ -804,20 +788,38 @@
             this.txtNome.Size = new System.Drawing.Size(418, 22);
             this.txtNome.TabIndex = 132;
             // 
+            // txtCpf
+            // 
+            this.txtCpf.Location = new System.Drawing.Point(78, 53);
+            this.txtCpf.Mask = "999.999.999-99";
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(140, 24);
+            this.txtCpf.TabIndex = 9;
+            // 
+            // txtCnpj
+            // 
+            this.txtCnpj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCnpj.Location = new System.Drawing.Point(78, 51);
+            this.txtCnpj.Mask = "99.999.999/9999-99";
+            this.txtCnpj.Name = "txtCnpj";
+            this.txtCnpj.Size = new System.Drawing.Size(140, 22);
+            this.txtCnpj.TabIndex = 96;
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 595);
-            this.Controls.Add(this.gbDocumentosPessoaJuridica);
+            this.Controls.Add(this.gbDocumentosPessoaFisica);
             this.Controls.Add(this.lblEstado);
+            this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.dtpNascimento);
             this.Controls.Add(this.gbTipoPessoa);
             this.Controls.Add(this.txtEstado);
-            this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.gbContato);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label12);
@@ -837,9 +839,11 @@
             this.Controls.Add(this.txtObservacao);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.gbDocumentosPessoaJuridica);
             this.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClientes";
-            this.Text = "        ";
+            this.Text = "Cadastro de Clientes";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.gbDocumentosPessoaFisica.ResumeLayout(false);
@@ -864,12 +868,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnSalvar;
         private System.Windows.Forms.GroupBox gbDocumentosPessoaFisica;
-        private System.Windows.Forms.MaskedTextBox txtCpf;
         private System.Windows.Forms.TextBox txtRg;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox gbDocumentosPessoaJuridica;
-        private System.Windows.Forms.MaskedTextBox txtCnpj;
         private System.Windows.Forms.TextBox txtIe;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
@@ -883,21 +885,6 @@
         private System.Windows.Forms.RadioButton rbPessoaFisica;
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.DataGridView dtgClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOME_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ENDERECO_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BAIRRO_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CEP_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CIDADE_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONE1_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONE2_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATA_CADASTRO_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NASCIMENTO_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACOES_CLIENTE;
-        private System.Windows.Forms.DataGridViewImageColumn btnEditar;
-        private System.Windows.Forms.DataGridViewImageColumn btnExcluir;
         private System.Windows.Forms.GroupBox gbContato;
         private System.Windows.Forms.MaskedTextBox txtTelefone2;
         private System.Windows.Forms.MaskedTextBox txtTelefone1;
@@ -924,5 +911,22 @@
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOME_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ENDERECO_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BAIRRO_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CEP_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIDADE_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONE1_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONE2_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATA_CADASTRO_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NASCIMENTO_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACOES_CLIENTE;
+        private System.Windows.Forms.DataGridViewImageColumn btnEditar;
+        private System.Windows.Forms.DataGridViewImageColumn btnExcluir;
+        private System.Windows.Forms.MaskedTextBox txtCpf;
+        private System.Windows.Forms.MaskedTextBox txtCnpj;
     }
 }

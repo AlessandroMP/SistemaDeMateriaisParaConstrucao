@@ -210,8 +210,7 @@ namespace MateriaisParaConstrucao
 
                 throw new Exception("Ocorreu um erro no Método PesquisarCpf. Caso o Problema persista entre em contato com o Administrador do Sistema!");
             }
-        }
-
+        }       
     }
 
 }

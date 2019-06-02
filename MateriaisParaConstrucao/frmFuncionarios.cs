@@ -37,8 +37,7 @@ namespace MateriaisParaConstrucao
                    novoFuncionario.Alterar(Convert.ToInt32(txtCodigo.Text), txtNome.Text, txtEndereco.Text, txtBairro.Text, mkCep.Text, txtCidade.Text, txtEmail.Text,
                                             dtpNascimento.Value.Date, mkTelefone1.Text, mkTelefone2.Text, txtRg.Text, mkCpf.Text, txtObservacoes.Text,
                                             dtpDataCadastro.Value.Date);
-                    MessageBox.Show("Funcionario Alterado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  
+                    MessageBox.Show("Funcionario Alterado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
                 }
 
                 ListarFuncionarios();

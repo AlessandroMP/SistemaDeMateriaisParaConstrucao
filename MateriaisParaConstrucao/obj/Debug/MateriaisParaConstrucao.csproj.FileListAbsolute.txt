@@ -9,3 +9,4 @@ E:\PROJETOS C#\Materiais de Construção\MateriaisParaConstrucao\obj\Debug\Mater
 E:\PROJETOS C#\Materiais de Construção\MateriaisParaConstrucao\obj\Debug\MateriaisParaConstrucao.pdb
 E:\PROJETOS C#\Materiais de Construção\MateriaisParaConstrucao\obj\Debug\MateriaisParaConstrucao.frmFuncionarios.resources
 E:\PROJETOS C#\Materiais de Construção\MateriaisParaConstrucao\obj\Debug\MateriaisParaConstrucao.frmPrincipal.resources
+E:\PROJETOS C#\Materiais de Construção\MateriaisParaConstrucao\obj\Debug\MateriaisParaConstrucao.frmClientes.resources

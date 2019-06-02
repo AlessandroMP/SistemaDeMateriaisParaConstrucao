@@ -46,5 +46,11 @@ namespace MateriaisParaConstrucao
                 }
             }
         }
+
+        private void BtnClientes_Click(object sender, EventArgs e)
+        {
+            frmClientes Clientes = new frmClientes();
+            Clientes.ShowDialog();
+        }
     }
 }

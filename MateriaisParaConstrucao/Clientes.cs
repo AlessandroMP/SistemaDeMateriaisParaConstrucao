@@ -52,7 +52,6 @@ namespace MateriaisParaConstrucao
                 throw new Exception("Ocorreu um erro no método Salvar. Caso o problema persista, entre em contato com o Administrador do Sistema.");
             }
         }
-
         public void SalvarPessoaFísica(int idCliente, string cpf, string rg)
         {
             try
@@ -78,7 +77,6 @@ namespace MateriaisParaConstrucao
                 throw new Exception("Ocorreu um erro no método SalvarPessoaFísica. Caso o problema persista, entre em contato com o Administrador do Sistema.");
             }
         }
-
         public void SalvarPessoaJuridica(int idCliente, string cnpj, string ie)
         {
             try
@@ -126,7 +124,88 @@ namespace MateriaisParaConstrucao
             {
                 throw new Exception("Ocorreu um erro no método Listar. Caso o problema persista, entre em contato com o Administrador do Sistema.");
             }
+        }           
+        public DataTable PesquisarNome(string nome)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+
+                    conexao.Open();
+
+                    sql.Append("SELECT * FROM Cliente");
+                    sql.Append(" WHERE (NOME_CLIENTE LIKE '%' +@nome+'%')");
+                    sql.Append(" ORDER BY ID_CLIENTE DESC");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@nome", nome));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    dadosTabela.Load(comandoSql.ExecuteReader());
+                    return dadosTabela;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Ocorreu um erro no Método PesquisarNome. Caso o Problema persista entre em contato com o Administrador do Sistema!");
+            }
+        }
+
+        public DataTable PesquisarCpf(string cpf)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+
+                    conexao.Open();
+
+                    sql.Append("SELECT * FROM Cliente");
+                    sql.Append(" WHERE (CPF_CLIENTE LIKE '%' +@cpf+ '%')");
+                    sql.Append(" ORDER BY ID_CLIENTE DESC");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@cpf", cpf));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    dadosTabela.Load(comandoSql.ExecuteReader());
+                    return dadosTabela;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Ocorreu um erro no Método PesquisarCpf. Caso o Problema persista entre em contato com o Administrador do Sistema!");
+            }
+        }
+
+        public DataTable PesquisarCnpj(string cnpj)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(Conexao.StringConexao))
+                {
+
+                    conexao.Open();
+
+                    sql.Append("SELECT * FROM Cliente");
+                    sql.Append(" WHERE (NOME_CLIENTE LIKE '%' +@cnpj+ '%')");
+                    sql.Append(" ORDER BY ID_CLIENTE DESC");
+
+                    comandoSql.Parameters.Add(new SqlParameter("@cnpj", cnpj));
+
+                    comandoSql.CommandText = sql.ToString();
+                    comandoSql.Connection = conexao;
+                    dadosTabela.Load(comandoSql.ExecuteReader());
+                    return dadosTabela;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro no Método PesquisarCnpj. Caso o Problema persista entre em contato com o Administrador do Sistema!");
+            }
         }
     }
-
 }
